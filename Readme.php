@@ -69,3 +69,19 @@ BUILD $ RUN
     docker rm <container_name> # Xóa một container đã dừng
     docker logs <container_name> # Xem log của container
     docker exec -it <container_name> bash # Truy cập vào terminal của container
+
+
+===== DEPLOY TO VPS=========
+Deploy thủ công:
+    1. Cài đặt Docker và Docker Compose trên VPS.
+    - Hiện tại đang dùng google cloud
+    2. Clone repository của bạn vào VPS.
+    3. Chạy lệnh docker compose up -d --build để khởi động ứng dụng.
+
+
+CI-CD với GitHub Actions:
+    1. Tạo file workflow trong thư mục .github/workflows/ (ví dụ: deploy.yml).
+    2. Sử dụng SSH để kết nối và chạy lệnh deploy trên VPS từ workflow.
+    - Tạo SSH key pair và thêm public key vào VPS.
+    - Thêm private key vào GitHub Secrets (Settings > Secrets > Actions).
+    3. Cấu hình workflow để tự động deploy khi có push lên branch main.

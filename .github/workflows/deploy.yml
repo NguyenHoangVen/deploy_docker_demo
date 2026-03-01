@@ -3,8 +3,8 @@ name: Deploy to VPS
 on:
   push:
     branches:
-      - main
-  workflow_dispatch:  
+      - main # Trigger the workflow on push to the main branch
+  workflow_dispatch:  # Allow manual triggering of the workflow from the GitHub Actions tab
 
 jobs:
   deploy:
@@ -15,14 +15,13 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Deploy via SSH
-        uses: appleboy/ssh-action@master
+        uses: appleboy/ssh-action@master 
         with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USER }}
-          key: ${{ secrets.VPS_SSH_KEY }}
+          host: ${{ secrets.VPS_HOST }} # The IP address or hostname of your VPS, stored as a secret in GitHub
+          username: ${{ secrets.VPS_USER }} # The SSH username for your VPS, stored as a secret in GitHub
+          key: ${{ secrets.VPS_SSH_KEY }} # The private SSH key for authentication, stored as a secret in GitHub
           script: |
             git config --global --add safe.directory /home/nguyenhoangven97/deploy_docker_demo
-            cd /home/nguyenhoangven97/deploy_docker_demo
             git fetch --all
             git reset --hard origin/main
             git log -1 --oneline

@@ -24,6 +24,6 @@ echo 'Hi docker VEN.........';
     <h1>Wellcome to Docker Application!</h1>
     <h3>Please check <a href="readme.php">readme.php</a> for more details....</h3>
     
-    <br><p>Test auto deploy (1)2 update role....</p>
+    <br><p>Test auto deploy....</p>
 </body>
 </html>
