@@ -24,4 +24,5 @@ jobs:
             cd /home/nguyenhoangven97/deploy_docker_demo
             git pull origin main
             docker-compose down
-            docker-compose up -d --build
+            docker-compose build --no-cache
+            docker-compose up -d
